@@ -1,0 +1,5 @@
+name: Common
+version: 1.0.0
+antigen: faz\common
+api: 5.0.0
+author: phuongaz
