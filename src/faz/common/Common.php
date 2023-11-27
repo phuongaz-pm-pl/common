@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace faz\common;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\Server;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
 
@@ -15,4 +16,13 @@ class Common {
         return libasynql::create($pluginBase, $databaseConfig, $sqlMap);
     }
 
+    public static function getAllNamePlayers() : \Generator {
+        $path = Server::getInstance()->getDataPath() . "players/";
+
+        $playerFiles = glob($path . "*.dat");
+
+        foreach ($playerFiles as $playerFile) {
+            yield basename($playerFile, ".dat");
+        }
+    }
 }
