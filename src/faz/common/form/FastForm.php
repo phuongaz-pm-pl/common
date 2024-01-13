@@ -36,7 +36,9 @@ class FastForm {
                 if($response) {
                     $onA($response);
                 } else {
-                    $onClose();
+                    if(!is_null($onClose)) {
+                        $onClose();
+                    }
                 }
             },
             $yes,
